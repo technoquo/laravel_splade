@@ -3,10 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
-use Illuminate\Http\Request;
-use ProtoneMedia\Splade\SpladeTable;
 use ProtoneMedia\Splade\Facades\Toast;
 use App\Http\Requests\CategoryStoreRequest;
+use App\Tables\Categories;
 
 class CategoryController extends Controller
 {
@@ -15,12 +14,13 @@ class CategoryController extends Controller
       
 
         return view('categories.index', [
-            'categories' => SpladeTable::for(Category::class)
-                ->column('title',  canBeHidden: false, sortable: true)
-                ->withGlobalSearch(columns: ['title'])
-                ->column('slug')
-                ->column('action')
-                ->paginate(5),
+            // 'categories' => SpladeTable::for(Category::class)
+            //     ->column('title',  canBeHidden: false, sortable: true)
+            //     ->withGlobalSearch(columns: ['title'])
+            //     ->column('slug')
+            //     ->column('action')
+            //     ->paginate(5),
+            'categories' => Categories::class,
         ]);
     }
 
